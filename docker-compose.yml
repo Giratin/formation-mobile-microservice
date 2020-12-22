@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+    serveur:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "8080:3000"
+        restart: unless-stopped
+        depends_on: 
+            - mongo-container
+    mongo-container:
+        image: mongo
+        ports:
+            - "27017:27017"
+        restart: unless-stopped
+        volumes:
+            - mongo-db-volume:/data/db
+
+volumes: 
+    mongo-db-volume:

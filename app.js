@@ -8,8 +8,13 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 const mongoose = require('mongoose');
-const m = require('mysql2');
 
+
+//Si on va utiliser docker il faut changer la connection string comme suit
+//mongoose.connect('mongodb://mongo-container:27017/workshop-esprit')...
+//mongo-container au lieu du localhost, docker va faire le mapping d'une façon automatique à l'@ IP qui le correpond
+//grâce au docker-compose.yml 
+//Attention il doit être identique au nom du service dans le docker-compose
 mongoose.connect('mongodb://localhost:27017/workshop-esprit', 
 { useNewUrlParser: true, 
   useUnifiedTopology: true, 
